@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'files',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -75,10 +76,15 @@ AUTH_USER_MODEL = 'accounts.Teacher'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ucot_files_db',
+        'USER': 'teacher',
+        'PASSWORD': '@teacher#8929',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
