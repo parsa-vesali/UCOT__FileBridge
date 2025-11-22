@@ -34,3 +34,18 @@ Simple Django File Management System with PostgreSQL.
 | GET | `/swagger/` | Swagger UI API Docs |
 | GET | `/redoc/` | ReDoc API Docs |
 
+
+
+## PostgreSQL Docker Service
+
+- Image: postgres:15
+- Username: ucot_user
+- Password: ucot_pass
+- Database: ucot_db
+- Port: 5432
+- Volume: postgres_data
+- Healthcheck: pg_isready
+
+### Connect from Django
+HOST = "db"
+PORT = 5432

@@ -77,11 +77,11 @@ AUTH_USER_MODEL = 'accounts.Teacher'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ucot_files_db',
-        'USER': 'teacher',
-        'PASSWORD': '@teacher#8929',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.environ.get('POSTGRES_DB', 'ucot_db'),
+        'USER': os.environ.get('POSTGRES_USER', 'ucot_user'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'ucot_pass'),
+        'HOST': os.environ.get('POSTGRES_HOST', 'db'), 
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 
