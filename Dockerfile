@@ -5,11 +5,18 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
+# install system deps
+RUN apt-get update && \
+    apt-get install -y netcat-openbsd && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY requirements.txt /app/
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 COPY . /app
 
-RUN apt-get update && apt-get install -y postgresql-client && rm -rf /var/lib/apt/lists/*
+# copy entrypoint
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x entrypoint.sh
 
-RUN chmod +x /app/wait-for-db.sh || true
+ENTRYPOINT ["/entrypoint.sh"]
