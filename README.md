@@ -49,3 +49,32 @@ Simple Django File Management System with PostgreSQL.
 ### Connect from Django
 HOST = "db"
 PORT = 5432
+
+
+
+## 🚀 Docker Compose Setup (API + PostgreSQL + MinIO)
+
+- API → Django REST Framework (port 8000)
+- Database → PostgreSQL 15 (port 5433 mapped to container 5432)
+- Storage → MinIO (ports 9000 & 9001)
+
+
+## 🛠 Environment Variables
+
+‍‍‍```env
+POSTGRES_DB=ucot_db
+POSTGRES_USER=ucot_user
+POSTGRES_PASSWORD=ucot_pass
+MINIO_ROOT_USER=minioadmin
+MINIO_ROOT_PASSWORD=minioadmin123
+```
+
+## 📦 Start All Services
+
+```bash
+docker compose up --build
+```
+
+- Django API at → http://localhost:8000/swagger/
+- MinIO Console at → http://localhost:9001
+- PostgreSQL internally at → db:5432
