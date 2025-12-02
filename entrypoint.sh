@@ -6,7 +6,7 @@ set -e
 echo "Waiting for Postgres..."
 
 # Wait until Postgres is ready
-while ! nc -z $DB_HOST $DB_PORT; do
+while ! pg_isready -h "$DB_HOST" -p "$DB_PORT" > /dev/null 2>&1; do
   sleep 0.5
 done
 

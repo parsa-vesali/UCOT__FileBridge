@@ -51,13 +51,13 @@ HOST = "db"
 PORT = 5432
 
 
-## 🚀 Docker Compose Setup (API + PostgreSQL + MinIO)
+##  Docker Compose Setup (API + PostgreSQL + MinIO)
 
 - API → Django REST Framework (port 8000)
-- Database → PostgreSQL 15 (port 5433 mapped to container 5432)
+- Database → PostgreSQL 15 (port 5432 mapped to container 5432)
 - Storage → MinIO (ports 9000 & 9001)
 
-## 🛠 Environment Variables
+##  Environment Variables
 
 ```env
 POSTGRES_DB=ucot_db
@@ -67,7 +67,7 @@ MINIO_ROOT_USER=minioadmin
 MINIO_ROOT_PASSWORD=minioadmin123
 ```
 
-## 📦 Start All Services
+##  Start All Services
 
 ```bash
 docker compose up --build

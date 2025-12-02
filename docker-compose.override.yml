@@ -7,6 +7,6 @@ services:
     volumes:
       - ./:/app
     command: >
-      sh -c "while ! pg_isready -h db -p 5432 -U ${POSTGRES_USER}; do sleep 1; done;
+      sh -c "while ! pg_isready -h db -p 5432; do sleep 1; done;
              python manage.py migrate &&
              python manage.py runserver 0.0.0.0:8000"
