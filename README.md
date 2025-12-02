@@ -8,13 +8,12 @@ Simple Django File Management System with PostgreSQL.
 - PostgreSQL database support
 
 ### Setup
-- python -m venv venv
-- source venv/bin/activate
-- pip install -r requirements.txt
+- pip install uv
+- uv sync
 
 ### Run Project
-- python manage.py migrate
-- python manage.py runserver
+- uv run python manage.py migrate
+- uv run python manage.py runserver
 
 ### API Endpoints
 
