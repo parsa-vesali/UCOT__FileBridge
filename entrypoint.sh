@@ -17,5 +17,5 @@ echo "Applying migrations..."
 python manage.py migrate
 
 # Start the server
-echo "Starting Django server..."
-python manage.py runserver 0.0.0.0:8000
+echo "Starting Django server with Gunicorn..."
+gunicorn config.wsgi:application --bind 0.0.0.0:8000

@@ -64,7 +64,7 @@ POSTGRES_DB=ucot_db
 POSTGRES_USER=ucot_user
 POSTGRES_PASSWORD=ucot_pass
 MINIO_ROOT_USER=minioadmin
-MINIO_ROOT_PASSWORD=minioadmin123
+MINIO_ROOT_PASSWORD=<your-secure-password>
 ```
 
 ##  Start All Services

@@ -12,3 +12,4 @@ until pg_isready -h "$host" -p "$port" > /dev/null 2>&1; do
 done
 
 echo "Postgres is up - continuing"
+exec "$@
