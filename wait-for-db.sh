@@ -1,8 +1,10 @@
+#!/bin/sh
 set -e
 
 host="$1"
 port="${2:-5432}"
-echo "Waiting for postgres at $host:$port..."
+
+echo "Waiting for ${host}:${port}..."
 
 until pg_isready -h "$host" -p "$port" > /dev/null 2>&1; do
   echo "Postgres is unavailable - sleeping"
@@ -10,4 +12,4 @@ until pg_isready -h "$host" -p "$port" > /dev/null 2>&1; do
 done
 
 echo "Postgres is up - continuing"
-exec "$@"
+exec "$@
