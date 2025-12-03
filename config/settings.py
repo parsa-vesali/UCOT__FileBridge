@@ -1,20 +1,16 @@
 from pathlib import Path
 import os
+from .env_settings import settings
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$5&jwr*4=-d0m2!03&kq!81lk4@2r-w@o@z4&li5$h38pqx^9u'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+SECRET_KEY = settings.SECRET_KEY
+DEBUG = settings.DEBUG
+ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 
 
 # Application definition
@@ -75,14 +71,7 @@ AUTH_USER_MODEL = 'accounts.Teacher'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('POSTGRES_DB', 'ucot_db'),
-        'USER': os.environ.get('POSTGRES_USER', 'ucot_user'),
-        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'ucot_pass'),
-        'HOST': os.environ.get('POSTGRES_HOST', 'db'), 
-        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
-    }
+    'default': dj_database_url.parse(settings.DATABASE_URL)
 }
 
 

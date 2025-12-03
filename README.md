@@ -57,15 +57,20 @@ PORT = 5432
 - Database → PostgreSQL 15 (port 5432 mapped to container 5432)
 - Storage → MinIO (ports 9000 & 9001)
 
-##  Environment Variables
+## Environment Variables
 
-```env
-POSTGRES_DB=ucot_db
-POSTGRES_USER=ucot_user
-POSTGRES_PASSWORD=ucot_pass
-MINIO_ROOT_USER=minioadmin
-MINIO_ROOT_PASSWORD=<your-secure-password>
-```
+Copy `.env.example` to `.env` and fill the required fields:
+
+- SECRET_KEY
+- DEBUG
+- ALLOWED_HOSTS
+- DATABASE_URL
+- MINIO_ROOT_USER
+- MINIO_ROOT_PASSWORD
+- MINIO_ENDPOINT
+- MINIO_BUCKET
+- API_HOST_PORT
+
 
 ##  Start All Services
 
@@ -76,3 +81,5 @@ docker compose up --build
 - Django API at → http://localhost:8000/swagger/
 - MinIO Console at → http://localhost:9001
 - PostgreSQL internally at → db:5432
+
+
