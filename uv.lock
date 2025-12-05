@@ -398,6 +398,7 @@ dependencies = [
     { name = "django" },
     { name = "djangorestframework" },
     { name = "djangorestframework-simplejwt" },
+    { name = "drf-yasg" },
     { name = "gunicorn" },
     { name = "inflection" },
     { name = "packaging" },
@@ -411,7 +412,6 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
-    { name = "drf-yasg" },
     { name = "pytest" },
 ]
 
@@ -421,6 +421,7 @@ requires-dist = [
     { name = "django", specifier = "==5.2.7" },
     { name = "djangorestframework", specifier = "==3.16.1" },
     { name = "djangorestframework-simplejwt", specifier = "==5.5.1" },
+    { name = "drf-yasg", specifier = "==1.21.11" },
     { name = "gunicorn", specifier = "==23.0.0" },
     { name = "inflection", specifier = "==0.5.1" },
     { name = "packaging", specifier = "==25.0" },
@@ -433,10 +434,7 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-dev = [
-    { name = "drf-yasg", specifier = "==1.21.11" },
-    { name = "pytest", specifier = ">=7.0.0" },
-]
+dev = [{ name = "pytest", specifier = ">=7.0.0" }]
 
 [[package]]
 name = "uritemplate"

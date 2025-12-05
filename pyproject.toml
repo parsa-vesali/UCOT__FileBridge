@@ -18,13 +18,17 @@ dependencies = [
     "sqlparse==0.5.3",
     "uritemplate==4.2.0",
     "gunicorn==23.0.0",
+    "drf-yasg==1.21.11",
 ]
 
 [dependency-groups]
 dev = [
-    "drf-yasg==1.21.11",
     "pytest>=7.0.0",
 ]
 
 [tool.uv]
 package = false
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "config.settings"
+python_files = ["tests.py", "test_*.py", "*_tests.py"]
