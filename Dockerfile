@@ -13,10 +13,14 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt /app/
+# Install uv
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-RUN pip install --upgrade pip \
-    && pip install --no-cache-dir -r requirements.txt
+# Copy dependency files
+COPY pyproject.toml uv.lock /app/
+
+# Install dependencies
+RUN uv sync --frozen --no-dev --no-install-project
 
 
 # ============================
@@ -26,6 +30,8 @@ FROM python:3.12-slim AS final
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
+ENV VIRTUAL_ENV=/app/.venv
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 WORKDIR /app
 
@@ -39,8 +45,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 
-# Copy app files from builder
-COPY --from=builder /usr/local /usr/local
+# Copy venv from builder
+COPY --from=builder /app/.venv /app/.venv
 COPY . /app
 
 # Set ownership
