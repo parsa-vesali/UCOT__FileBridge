@@ -12,6 +12,12 @@ SECRET_KEY = settings.SECRET_KEY
 DEBUG = settings.DEBUG
 ALLOWED_HOSTS = settings.ALLOWED_HOSTS
 
+# Security check: Prevent DEBUG=True in production
+if DEBUG and ALLOWED_HOSTS and any(host not in ("localhost", "127.0.0.1", "[::1]") for host in ALLOWED_HOSTS):
+    raise RuntimeError(
+        "SECURITY ERROR: DEBUG=True while ALLOWED_HOSTS is set for production. "
+        "Never run with DEBUG=True in production! Set DEBUG=False in your environment."
+)
 
 # Application definition
 
