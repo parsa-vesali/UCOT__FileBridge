@@ -4,19 +4,18 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('files', '0001_initial'),
+        ("files", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='file',
-            options={'ordering': ['-uploaded_at']},
+            name="file",
+            options={"ordering": ["-uploaded_at"]},
         ),
         migrations.AddField(
-            model_name='file',
-            name='title',
+            model_name="file",
+            name="title",
             field=models.CharField(blank=True, max_length=255),
         ),
     ]
