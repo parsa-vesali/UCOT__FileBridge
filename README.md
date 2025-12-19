@@ -82,3 +82,41 @@ docker compose up --build
 - PostgreSQL internally at → db:5432
 
 
+# Pre-commit Hooks
+
+Automated code quality checks before commits.
+
+## Quick Setup
+
+```bash
+# Install dev dependencies
+uv sync --group dev
+
+# Install git hooks
+uv run pre-commit install
+```
+
+## Usage
+
+Pre-commit runs automatically on `git commit`. To run manually:
+
+```bash
+# Check all file
+uv run pre-commit run --all-files
+# Run a specific hook
+uv run pre-commit run black --all-files
+```
+
+## Tools
+
+- **Black**: Code formatter
+- **isort**: Import sorter
+- **Flake8**: Style checker
+- **mypy**: Type checker
+
+
+## Configuration
+
+- `.pre-commit-config.yaml` - Pre-commit hooks
+- `pyproject.toml` - Tool settings
+- `.flake8` - Flake8 config

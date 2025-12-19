@@ -18,17 +18,14 @@ class FileSerializer(serializers.ModelSerializer):
     The teacher field is set automatically in the view and is read-only here.
     """
 
-    teacher_name = serializers.CharField(
-        source='teacher.get_full_name',
-        read_only=True
-    )
+    teacher_name = serializers.CharField(source="teacher.get_full_name", read_only=True)
 
     class Meta:
         """Meta options for FileSerializer."""
 
         model = File
-        fields = ['id', 'title', 'file', 'uploaded_at', 'teacher_name']
-        read_only_fields = ['id', 'uploaded_at', 'teacher_name']
+        fields = ["id", "title", "file", "uploaded_at", "teacher_name"]
+        read_only_fields = ["id", "uploaded_at", "teacher_name"]
 
     def validate_title(self, value):
         """

@@ -22,29 +22,19 @@ class File(models.Model):
     teacher = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='uploaded_files',
-        verbose_name='Teacher'
+        related_name="uploaded_files",
+        verbose_name="Teacher",
     )
-    title = models.CharField(
-        max_length=255,
-        blank=True,
-        verbose_name='Title'
-    )
-    file = models.FileField(
-        upload_to='uploads/',
-        verbose_name='File'
-    )
-    uploaded_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Uploaded At'
-    )
+    title = models.CharField(max_length=255, blank=True, verbose_name="Title")
+    file = models.FileField(upload_to="uploads/", verbose_name="File")
+    uploaded_at = models.DateTimeField(auto_now_add=True, verbose_name="Uploaded At")
 
     class Meta:
         """Meta options for the File model."""
 
-        ordering = ['-uploaded_at']
-        verbose_name = 'File'
-        verbose_name_plural = 'Files'
+        ordering = ["-uploaded_at"]
+        verbose_name = "File"
+        verbose_name_plural = "Files"
 
     def __str__(self):
         """Return string representation of the file."""
